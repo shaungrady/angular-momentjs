@@ -6,30 +6,30 @@
   "license": "MIT",
   "homepage": "https://github.com/orcasnet.com/angular-momentjs",
   "main": "src/angular-moment.js",
+  "scripts": {
+    "test": "karma start"
+  },
   "dependencies": {},
   "devDependencies": {
-    "gulp": "~3.8.0",
-    "gulp-util": "~2.2.12",
-    "gulp-clean": "~0.2.4",
-    "gulp-concat": "~2.1.7",
-    "gulp-karma": "0.0.2",
-    "gulp-rename": "~0.2.2",
-    "gulp-uglify": "~0.2.0",
-    "karma": "~0.10",
-    "karma-coverage": "~0.1",
-    "karma-jasmine": "0.1",
-    "karma-chrome-launcher": "~0.1",
-    "karma-safari-launcher": "~0.1",
-    "karma-firefox-launcher": "~0.1",
-    "karma-ng-html2js-preprocessor": "~0.1.0"
-  },
-  "scripts": {
-    "build": "gulp build",
-    "develop": "gulp develop",
-    "test": "gulp test"
+    "angular": "~1.6",
+    "angular-mocks": "~1.6",
+    "jasmine-core": "^2.5.2",
+    "karma": "~1.4",
+    "karma-chrome-launcher": "~2.0",
+    "karma-coverage": "~1.1",
+    "karma-firefox-launcher": "~1.0",
+    "karma-jasmine": "1.1",
+    "karma-ng-html2js-preprocessor": "~1.0.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-safari-launcher": "~1.0",
+    "moment": "~2.6.1"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/orcasnet.com/angular-momentjs.git"
+  },
+  "peerDependencies": {
+    "angular": ">=1.2 <1.7",
+    "moment": "<2.6"
   }
 }
