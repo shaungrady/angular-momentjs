@@ -7,7 +7,7 @@
   "homepage": "https://github.com/orcasnet.com/angular-momentjs",
   "main": "./lib",
   "scripts": {
-    "bundle": "nwebpack && npm run bundle-umd",
+    "bundle": "webpack && npm run bundle-umd",
     "bundle-umd": "webpack --config webpack.config.browser.js && webpack --config webpack.config.browser-min.js",
     "test": "karma start"
   },
