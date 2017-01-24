@@ -28,4 +28,4 @@ export default ['$moment', function ($moment) {
 
     return date
   }
-}])
+}]
