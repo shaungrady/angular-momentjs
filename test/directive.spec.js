@@ -58,16 +58,6 @@ describe('$moment', function () {
 
     describe('input directive', function() {
 
-      it('should initialize only on type "date" and "moment" inputs', function() {
-        var textInput   = compile('<input type="text" ng-model="date">');
-        var dateInput   = compile('<input type="date" ng-model="date">');
-        var momentInput = compile('<input type="moment" ng-model="date">');
-        $scope.$apply("dateFormat = '"+ modelDate +"'");
-        expect(textInput.attr('class').split(' ')).not.toContain('ng-valid-date');
-        expect(dateInput.attr('class').split(' ')).toContain('ng-valid-date');
-        expect(momentInput.attr('class').split(' ')).toContain('ng-valid-date');
-      });
-
       it('should initialize only on inputs with an ngModelController', function() {
         var plainInput  = compile('<input type="moment">');
         var momentInput = compile('<input type="moment" ng-model="date">');
@@ -184,7 +174,7 @@ describe('$moment', function () {
 
         var input = compile(momentInputMinMax),
             ctrl  = input.controller('ngModel');
-            
+
         expect(ctrl.$error.min).toBe(false);
         expect(ctrl.$error.max).toBe(true);
         expect(input.val()).toBe('');
