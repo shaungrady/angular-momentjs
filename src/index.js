@@ -1,5 +1,4 @@
 import angular from 'angular'
-import moment from 'moment'
 
 import service from './service'
 import filter from './filter'
