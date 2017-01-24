@@ -5,7 +5,7 @@
   "author": "Shaun Grady <grady@shaungrady.com>",
   "license": "MIT",
   "homepage": "https://github.com/orcasnet.com/angular-momentjs",
-  "main": "src/angular-moment.js",
+  "main": "./lib",
   "scripts": {
     "bundle": "nwebpack && npm run bundle-umd",
     "bundle-umd": "webpack --config webpack.config.browser.js && webpack --config webpack.config.browser-min.js",
@@ -39,5 +39,10 @@
   "peerDependencies": {
     "angular": ">=1.2 <1.7",
     "moment": "<2.6"
-  }
+  },
+  "files": [
+    "lib/*.js",
+    "release/angular-moment.js",
+    "readme.md"
+  ]
 }
