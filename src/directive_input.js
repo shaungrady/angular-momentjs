@@ -1,5 +1,5 @@
 import angular from 'angular'
-import {indexOf} from './utils'
+import indexOf from 'indexof'
 
 export default ['$moment', '$timeout', function inputDirective ($moment, $timeout) {
   // Maybe expose a setting for localization someday...

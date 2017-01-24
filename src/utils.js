@@ -1,13 +1,4 @@
-export {indexOf, getOffset}
-
-function indexOf (array, obj) {
-  // Taken from github.com/angular/angular.js
-  if (array.indexOf) return array.indexOf(obj)
-  for (var i = 0; i < array.length; i++) {
-    if (obj === array[i]) return i
-  }
-  return -1
-}
+export {getOffset}
 
 function getOffset (elem) {
   // Based on http://stackoverflow.com/a/8111175
