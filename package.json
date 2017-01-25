@@ -9,7 +9,7 @@
   "scripts": {
     "bundle": "webpack && npm run bundle-umd",
     "bundle-umd": "webpack --config webpack.config.browser.js && webpack --config webpack.config.browser-min.js",
-    "test": "karma start",
+    "test": "karma start && eslint .",
     "pretest": "rm -rf ./coverage/",
     "patch": "npm version patch -m '%s'",
     "minor": "npm version minor -m '%s'",
