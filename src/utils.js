@@ -20,7 +20,7 @@ function getOffset (elem) {
   boxElem.style.width = '1px'
 
   bodyElem.appendChild(boxElem)
-  isBoxModel = boxElem.offsetWidth == 2
+  isBoxModel = boxElem.offsetWidth === 2
   bodyElem.removeChild(boxElem)
   boxElem = elem.getBoundingClientRect()
 

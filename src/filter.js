@@ -5,8 +5,8 @@ export default ['$moment', function ($moment) {
   // String: Moment output format (defaults to defaultViewFormat)
   // Array: Moment input format, moment output format, [strict]
   return function momentFormatFilter (date, format) {
-    var moment, strict, inputFormat,
-      outputFormat = $moment.$defaultViewFormat
+    var moment, strict, inputFormat
+    var outputFormat = $moment.$defaultViewFormat
 
     if (!angular.isDefined(date)) { return date }
 
