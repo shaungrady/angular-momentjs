@@ -8,6 +8,7 @@ describe('$moment', function () {
   var $moment, $scope, $compile, $timeout, compile
 
   var momentInput = '<input type="moment" ng-model="date">'
+  var momentInputWithPlaceholder = '<input placeholder="hi" type="moment" ng-model="date">'
   var momentInputFormat = '<input type="moment" ng-model="date" format="dateFormat">'
   var momentInputViewModelFormat = '<input type="moment" ng-model="date" view-format="dateViewFormat" model-format="dateModelFormat">'
   var momentInputMinMax = '<input type="moment" ng-model="date" min="dateMin" max="dateMax">'
@@ -63,6 +64,7 @@ describe('$moment', function () {
     })
 
     it('should set the placeholder value to match the view\'s format', function () {
+      $scope.$apply("dateFormat = '" + dateFormat1 + "'")
       var input = compile(momentInput)
       expect(input.attr('placeholder')).toBe('MM/DD/YYYY')
     })
@@ -71,8 +73,12 @@ describe('$moment', function () {
       var input = compile(momentInputFormat)
       $scope.$apply("dateFormat = '" + dateFormat1 + "'")
       expect(input.attr('placeholder')).toBe(dateFormat1)
-      $scope.$apply("dateFormat = '" + dateFormat2 + "'")
-      expect(input.attr('placeholder')).toBe(dateFormat2)
+    })
+
+    it('should not change existing placeholder value', function () {
+      var input = compile(momentInputWithPlaceholder)
+      $scope.$apply("dateFormat = '" + dateFormat1 + "'")
+      expect(input.attr('placeholder')).toBe('hi')
     })
 
     it('should format a model date for the view', function () {

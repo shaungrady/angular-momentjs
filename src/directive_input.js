@@ -17,7 +17,7 @@ export default ['$moment', '$timeout', function inputDirective ($moment, $timeou
       if (tAttr.type !== 'date' && tAttr.type !== 'moment') { return angular.noop }
       return function inputPostLink (scope, element, attr, ctrl) {
         // All the functionality of this directive requires ngModelCtrl.
-        if (!ctrl) { return }
+        if (!ctrl) return
 
         // A Moment of the last value passed through the directive's validator. Allows
         // stepping function to not have to reparse ctrl.$viewValue and potentially fail
@@ -45,11 +45,15 @@ export default ['$moment', '$timeout', function inputDirective ($moment, $timeou
           }
         }
 
+        var setPlaceholder = angular.noop
+
         // Utility Functions
         // ///////////////////
 
-        var setPlaceholder = function (format) {
-          if (!element.attr('placeholder')) { element.attr('placeholder', $moment.$parseFormat(format)) }
+        if (element.attr('placeholder') == null) {
+          setPlaceholder = function (format) {
+            element.attr('placeholder', $moment.$parseFormat(format))
+          }
         }
 
         var reparseOrReformatValue = function () {
