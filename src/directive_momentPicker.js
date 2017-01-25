@@ -1,4 +1,5 @@
 import angular from 'angular'
+import indexOf from 'indexof'
 
 export default ['$moment', '$log', function inputDirective ($moment, $log) {
   var weekStartDay = $moment().startOf('week').format('d')
@@ -185,9 +186,7 @@ export default ['$moment', '$log', function inputDirective ($moment, $log) {
           while ($scope.lastMonthMoments.length + $scope.thisMonthMoments.length + $scope.nextMonthMoments.length < 42) { $scope.nextMonthMoments.push(nextMonthMoment.add(1, 'day').clone()) }
 
           while ($scope.monthsThisYearMoments.length < 12) {
-            $scope.monthsThisYearMoments.push(
-              $moment({ year: thisYear, month: $scope.monthsThisYearMoments.length })
-            )
+            $scope.monthsThisYearMoments.push($moment({ year: thisYear, month: $scope.monthsThisYearMoments.length }))
           }
         }
 
@@ -217,8 +216,16 @@ export default ['$moment', '$log', function inputDirective ($moment, $log) {
           var name = className.split('-')[0]
           var unit = className.split('-')[1] || ctrl.template.unit
 
-          if (scope.pickedMoment && name === 'picked') { classObject[className] = moment.isSame(scope.pickedMoment, ctrl.template.unit) } else if (name === 'current') { classObject[className + ' current'] = moment.isSame(scope.today, unit) } else if (name === 'invalid' && (ctrl.minMoment || ctrl.maxMoment)) {
-            if (ctrl.minMoment && moment.isBefore(ctrl.minMoment, unit)) { classObject[className + ' invalid'] = true } else if (ctrl.maxMoment && moment.isAfter(ctrl.maxMoment, unit)) { classObject[className + ' invalid'] = true }
+          if (scope.pickedMoment && name === 'picked') {
+            classObject[className] = moment.isSame(scope.pickedMoment, ctrl.template.unit)
+          } else if (name === 'current') {
+            classObject[className + ' current'] = moment.isSame(scope.today, unit)
+          } else if (name === 'invalid' && (ctrl.minMoment || ctrl.maxMoment)) {
+            if (ctrl.minMoment && moment.isBefore(ctrl.minMoment, unit)) {
+              classObject[className + ' invalid'] = true
+            } else if (ctrl.maxMoment && moment.isAfter(ctrl.maxMoment, unit)) {
+              classObject[className + ' invalid'] = true
+            }
           }
         })
 
