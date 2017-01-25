@@ -21,6 +21,7 @@
   "devDependencies": {
     "angular": "~1.6",
     "angular-mocks": "~1.6",
+    "bootstrap-css-only": "^3.3.7",
     "codeclimate-test-reporter": "^0.4.0",
     "eslint": "^3.14.0",
     "eslint-config-standard": "^6.2.1",
