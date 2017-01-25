@@ -1,61 +1,46 @@
 // Karma configuration
 // http://karma-runner.github.io/0.10/config/configuration-file.html
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
-    // base path, that will be used to resolve files and exclude
-    basePath: './',
-
-    // testing framework to use (jasmine/mocha/qunit/...)
+    basePath: '',
     frameworks: ['jasmine'],
-
-    preprocessors : {
-      '**/src/*.js': 'coverage',
-      'templates/*.html': 'ng-html2js'
-    },
-
-    // list of files / patterns to load in the browser
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/moment/moment.js',
-      'dist/angular-moment.js',
+      'src/index.js',
       'test/*.spec.js',
-      'templates/*.html',
+      'templates/*.html'
     ],
+    exclude: [],
+
+    preprocessors: {
+      'src/index.js': ['webpack'],
+      'templates/*.html': ['ng-html2js']
+    },
+
+    webpack: {
+      externals: {
+        angular: 'angular',
+        moment: 'moment'
+      },
+      module: {},
+      devtool: 'inline-source-map'
+    },
+    webpackMiddleware: {
+      stats: 'minimal'
+    },
 
     ngHtml2JsPreprocessor: {
       moduleName: 'templates'
     },
 
-    // list of files / patterns to exclude
-    exclude: [],
-
-    // web server port
+    reporters: ['progress', 'coverage'],
     port: 8080,
-
-    // level of logging
-    // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-    // enable / disable watching file and executing tests whenever any file changes
+    logLevel: config.LOG_DEBUG,
     autoWatch: false,
-
-    // Start these browsers, currently available:
-    // - Chrome
-    // - ChromeCanary
-    // - Firefox
-    // - Opera
-    // - Safari (only Mac)
-    // - PhantomJS
-    // - IE (only Windows)
     browsers: ['PhantomJS'],
-    // browsers: ['Firefox'],
-
-    // Continuous Integration mode
-    // if true, it capture browsers, run tests and exit
-    singleRun: true,
-
-    reporters : ['progress', 'coverage']
-  });
-};
+    singleRun: true
+  })
+}
