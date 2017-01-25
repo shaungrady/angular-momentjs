@@ -9,7 +9,10 @@
   "scripts": {
     "bundle": "webpack && npm run bundle-umd",
     "bundle-umd": "webpack --config webpack.config.browser.js && webpack --config webpack.config.browser-min.js",
-    "test": "karma start"
+    "test": "karma start",
+    "patch": "npm version patch -m '%s'",
+    "minor": "npm version minor -m '%s'",
+    "version": "rm -rf lib/ lib/ && npm run bundle && git add -A lib/ lib/"
   },
   "dependencies": {
     "indexof": "^0.0.1"
