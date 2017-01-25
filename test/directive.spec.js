@@ -41,7 +41,7 @@ describe('$moment', function () {
         upKeyEvent     = ['keydown', { type:'keydown', which:38 }],
         downKeyEvent   = ['keydown', { type:'keydown', which:40 }];
 
-    beforeEach(angular.mock.module('moment'));
+    beforeEach(angular.mock.module('$moment'));
     beforeEach(inject(function (_$moment_, _$rootScope_, _$compile_, _$timeout_) {
       $moment  = _$moment_;
       $scope   = _$rootScope_.$new();

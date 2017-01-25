@@ -10,7 +10,7 @@ describe('$moment', function () {
     var modelDateLowest  = '307542400',
         viewDateLowest   = '09/30/1979';
 
-    beforeEach(angular.mock.module('moment'));
+    beforeEach(angular.mock.module('$moment'));
     beforeEach(inject(function (_$moment_, _$rootScope_, _$compile_, _$filter_) {
       $moment  = _$moment_;
       $scope   = _$rootScope_.$new();

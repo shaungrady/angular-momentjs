@@ -4,7 +4,7 @@ describe('$moment', function () {
 
     var $moment;
 
-    beforeEach(angular.mock.module('moment'));
+    beforeEach(angular.mock.module('$moment'));
     beforeEach(inject(function (_$moment_) {
       $moment = _$moment_;
     }));

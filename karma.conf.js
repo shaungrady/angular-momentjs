@@ -1,5 +1,4 @@
-// Karma configuration
-// http://karma-runner.github.io/0.10/config/configuration-file.html
+const path = require('path')
 
 module.exports = function (config) {
   config.set({
@@ -16,7 +15,8 @@ module.exports = function (config) {
     exclude: [],
 
     preprocessors: {
-      'src/index.js': ['webpack'],
+      'src/index.js': ['webpack', 'sourcemap'],
+      'test/*.spec.js': ['webpack', 'sourcemap'],
       'templates/*.html': ['ng-html2js']
     },
 
@@ -25,7 +25,18 @@ module.exports = function (config) {
         angular: 'angular',
         moment: 'moment'
       },
-      module: {},
+      module: {
+        rules: [{
+          test: /\.js$/,
+          include: path.resolve(__dirname, 'src'),
+          exclude: /node_modules/,
+          enforce: 'post',
+          loader: 'istanbul-instrumenter-loader',
+          options: {
+            esModules: true
+          }
+        }]
+      },
       devtool: 'inline-source-map'
     },
     webpackMiddleware: {
@@ -37,10 +48,18 @@ module.exports = function (config) {
     },
 
     reporters: ['progress', 'coverage'],
-    port: 8080,
-    logLevel: config.LOG_DEBUG,
-    autoWatch: false,
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage'
+    },
+
+    port: 9876,
+    colors: true,
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
     browsers: ['PhantomJS'],
-    singleRun: true
+    singleRun: true,
+    concurrency: Infinity
   })
 }

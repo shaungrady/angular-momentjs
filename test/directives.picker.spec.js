@@ -5,7 +5,7 @@ describe('momentPicker directive', function () {
     var $moment, $scope, $compile, compileHtml;
 
 
-    beforeEach(module('moment'));
+    beforeEach(module('$moment'));
     beforeEach(module('templates'));
 
     beforeEach(module(function($momentProvider) {
@@ -22,7 +22,7 @@ describe('momentPicker directive', function () {
       // TODO: Fix service so this workaround doesn't have to happen.
       $moment.$$pickerTemplates['default'] = {
         url:  'templates/momentpicker.day.html',
-        unit: 'days' 
+        unit: 'days'
       };
 
       compileHtml = function(markup) {
@@ -33,7 +33,7 @@ describe('momentPicker directive', function () {
     }));
 
     describe('controller initialization', function() {
-      
+
         it('should set displayMoment to the current date', function() {
           var picker   = compileHtml('<div moment-picker="date"></div>'),
               isoScope = picker.isolateScope(),
@@ -100,7 +100,7 @@ describe('momentPicker directive', function () {
     });
 
 
-    
+
     describe('controller method', function() {
 
       it('setVisibility should set/unset "ng-hide" class', function() {
@@ -294,7 +294,7 @@ describe('momentPicker directive', function () {
     });
 
 
-    
+
     describe('directive attribute', function() {
 
       it('"format" should set controller.format value', function() {

@@ -10,6 +10,7 @@
     "bundle": "webpack && npm run bundle-umd",
     "bundle-umd": "webpack --config webpack.config.browser.js && webpack --config webpack.config.browser-min.js",
     "test": "karma start",
+    "pretest": "rm -rf ./coverage/",
     "patch": "npm version patch -m '%s'",
     "minor": "npm version minor -m '%s'",
     "version": "rm -rf lib/ dist/ && npm run bundle && git add -A lib/ dist/"
@@ -24,6 +25,7 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
+    "istanbul-instrumenter-loader": "^1.2.0",
     "jasmine-core": "^2.5.2",
     "karma": "^1.4.0",
     "karma-coverage": "^1.1.1",
