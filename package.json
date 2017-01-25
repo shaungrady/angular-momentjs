@@ -12,7 +12,7 @@
     "test": "karma start",
     "patch": "npm version patch -m '%s'",
     "minor": "npm version minor -m '%s'",
-    "version": "rm -rf lib/ lib/ && npm run bundle && git add -A lib/ lib/"
+    "version": "rm -rf lib/ dist/ && npm run bundle && git add -A lib/ dist/"
   },
   "dependencies": {
     "indexof": "^0.0.1"
