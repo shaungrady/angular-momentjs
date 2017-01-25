@@ -4,10 +4,10 @@ describe('momentPicker directive', function () {
 
   var $moment, $scope, $compile, compileHtml
 
-  beforeEach(module('$moment'))
-  beforeEach(module('templates'))
+  beforeEach(angular.mock.module('$moment'))
+  beforeEach(angular.mock.module('templates'))
 
-  beforeEach(module(function ($momentProvider) {
+  beforeEach(angular.mock.module(function ($momentProvider) {
     $momentProvider.definePickerTemplate({
       name: 'default',
       url: 'templates/momentpicker.day.html'
@@ -18,7 +18,7 @@ describe('momentPicker directive', function () {
     $moment = _$moment_
     $scope = _$rootScope_.$new()
     $compile = _$compile_
-      // TODO: Fix service so this workaround doesn't have to happen.
+    // TODO: Fix service so this workaround doesn't have to happen.
     $moment.$$pickerTemplates['default'] = {
       url: 'templates/momentpicker.day.html',
       unit: 'days'
