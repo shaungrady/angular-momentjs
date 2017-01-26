@@ -10,5 +10,7 @@ addons:
     packages:
       - g++-4.8
 
+before_script:
+  -export TZ=US/Pacific
 after_script:
   - codeclimate-test-reporter < coverage/lcov.info
