@@ -64,7 +64,11 @@ export default ['$moment', '$timeout', function inputDirective ($moment, $timeou
         }
 
         var reparseViewValue = function () {
-          if (!ctrl.$isEmpty(ctrl.$viewValue)) { ctrl.$setViewValue(ctrl.$viewValue) }
+          if (!ctrl.$isEmpty(ctrl.$viewValue)) {
+            var val = ctrl.$viewValue
+            ctrl.$setViewValue(val + ' ')
+            ctrl.$setViewValue(val)
+          }
         }
         var reformatModelValue = function () {
           // Is there a better way to resend the model value through the formatter pipeline?

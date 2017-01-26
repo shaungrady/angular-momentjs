@@ -100,11 +100,11 @@ describe('$moment', function () {
 
       ctrl.$setViewValue('Purple monkey dishwasher')
       expect(ctrl.$error.date).toBe(true)
-      expect($scope.date).toBeUndefined()
+      expect($scope.date).toBeFalsy()
 
       ctrl.$setViewValue('01/32/1986')
       expect(ctrl.$error.date).toBe(true)
-      expect($scope.date).toBeUndefined()
+      expect($scope.date).toBeFalsy()
     })
 
     it('should reformat view/model based on view- and model-format attrs', function () {
@@ -147,23 +147,25 @@ describe('$moment', function () {
       $scope.$apply("date    = '" + modelDate + "'")
       $scope.$apply("dateMin = '" + modelDateLower + "'")
       $scope.$apply("dateMax = '" + modelDateHigher + "'")
-      expect(ctrl.$error.min).toBe(false)
-      expect(ctrl.$error.max).toBe(false)
+
+      expect(ctrl.$error.min).toBeFalsy()
+      expect(ctrl.$error.max).toBeFalsy()
       expect(input.val()).toBe(viewDate)
 
       $scope.$apply("date = '" + modelDateLowest + "'")
       expect(ctrl.$error.min).toBe(true)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.max).toBeFalsy()
       expect(input.val()).toBe('')
 
+
       $scope.$apply("date = '" + modelDateHighest + "'")
-      expect(ctrl.$error.min).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
       expect(ctrl.$error.max).toBe(true)
       expect(input.val()).toBe('')
 
       $scope.$apply("date = '" + modelDate + "'")
-      expect(ctrl.$error.min).toBe(false)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
+      expect(ctrl.$error.max).toBeFalsy()
       expect(input.val()).toBe(viewDate)
     })
 
@@ -175,7 +177,7 @@ describe('$moment', function () {
       var input = compile(momentInputMinMax)
       var ctrl = input.controller('ngModel')
 
-      expect(ctrl.$error.min).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
       expect(ctrl.$error.max).toBe(true)
       expect(input.val()).toBe('')
       expect($scope.date).toBe(modelDateHighest)
@@ -189,23 +191,23 @@ describe('$moment', function () {
       $scope.$apply("dateMin = ['" + viewDateLower + "', 'MM-DD-YYYY'] ")
       $scope.$apply("dateMax = ['" + viewDateHigher + "', 'MM-DD-YYYY'] ")
 
-      expect(ctrl.$error.min).toBe(false)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
+      expect(ctrl.$error.max).toBeFalsy()
       expect(input.val()).toBe(viewDate)
 
       $scope.$apply("date = '" + modelDateLowest + "'")
       expect(ctrl.$error.min).toBe(true)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.max).toBeFalsy()
       expect(input.val()).toBe('')
 
       $scope.$apply("date = '" + modelDateHighest + "'")
-      expect(ctrl.$error.min).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
       expect(ctrl.$error.max).toBe(true)
       expect(input.val()).toBe('')
 
       $scope.$apply("date = '" + modelDate + "'")
-      expect(ctrl.$error.min).toBe(false)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
+      expect(ctrl.$error.max).toBeFalsy()
       expect(input.val()).toBe(viewDate)
     })
 
@@ -220,13 +222,13 @@ describe('$moment', function () {
 
       ctrl.$setViewValue(viewDateLowest)
       expect(ctrl.$error.min).toBe(true)
-      expect(ctrl.$error.max).toBe(false)
-      expect($scope.date).toBeUndefined()
+      expect(ctrl.$error.max).toBeFalsy()
+      expect($scope.date).toBeFalsy()
 
       ctrl.$setViewValue(viewDateHighest)
-      expect(ctrl.$error.min).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
       expect(ctrl.$error.max).toBe(true)
-      expect($scope.date).toBeUndefined()
+      expect($scope.date).toBeFalsy()
     })
 
     it('should validate the view against min and max array values', function () {
@@ -238,13 +240,13 @@ describe('$moment', function () {
 
       ctrl.$setViewValue(viewDateLowest)
       expect(ctrl.$error.min).toBe(true)
-      expect(ctrl.$error.max).toBe(false)
-      expect($scope.date).toBeUndefined()
+      expect(ctrl.$error.max).toBeFalsy()
+      expect($scope.date).toBeFalsy()
 
       ctrl.$setViewValue(viewDateHighest)
-      expect(ctrl.$error.min).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
       expect(ctrl.$error.max).toBe(true)
-      expect($scope.date).toBeUndefined()
+      expect($scope.date).toBeFalsy()
     })
 
     it('should accept "today" keyword for min and max attrs', function () {
@@ -255,15 +257,15 @@ describe('$moment', function () {
       $scope.$apply("dateMin = 'today'")
       $scope.$apply("dateMax = 'today'")
 
-      expect(ctrl.$error.min).toBe(false)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
+      expect(ctrl.$error.max).toBeFalsy()
 
       $scope.$apply("date = '" + yesterdayModel + "'")
       expect(ctrl.$error.min).toBe(true)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.max).toBeFalsy()
 
       $scope.$apply("date = '" + tomorrowModel + "'")
-      expect(ctrl.$error.min).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
       expect(ctrl.$error.max).toBe(true)
     })
 
@@ -281,24 +283,24 @@ describe('$moment', function () {
       $scope.$apply("dateMax = '" + modelDateLower + "'")
 
       $timeout.flush()
-      expect(ctrl.$error.min).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
       expect(ctrl.$error.max).toBe(true)
-      expect(ctrl.$viewValue).toBeUndefined()
+      expect(ctrl.$viewValue).toBeFalsy()
 
       $scope.$apply("dateMin = '" + modelDateHigher + "'")
       $scope.$apply("dateMax = '" + modelDateHighest + "'")
 
       $timeout.flush()
       expect(ctrl.$error.min).toBe(true)
-      expect(ctrl.$error.max).toBe(false)
-      expect(ctrl.$viewValue).toBeUndefined()
+      expect(ctrl.$error.max).toBeFalsy()
+      expect(ctrl.$viewValue).toBeFalsy()
 
       $scope.$apply("dateMin = '" + modelDateLower + "'")
       $scope.$apply("dateMax = '" + modelDateHigher + "'")
 
       $timeout.flush()
-      expect(ctrl.$error.min).toBe(false)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
+      expect(ctrl.$error.max).toBeFalsy()
       expect(ctrl.$viewValue).toBe(viewDate)
     })
 
@@ -318,8 +320,8 @@ describe('$moment', function () {
 
       $timeout.flush()
 
-      expect(ctrl.$error.min).toBe(false)
-      expect(ctrl.$error.max).toBe(false)
+      expect(ctrl.$error.min).toBeFalsy()
+      expect(ctrl.$error.max).toBeFalsy()
     })
 
       // Stepping
@@ -398,7 +400,7 @@ describe('$moment', function () {
       ctrl.$setViewValue('Purple monkey dishwasher')
       input.triggerHandler.apply(input, wheelUpEvent)
       expect(ctrl.$viewValue).toBe('Purple monkey dishwasher')
-      expect($scope.date).toBeUndefined()
+      expect($scope.date).toBeFalsy()
     })
 
     it('should not step if keydown event key isn\'t up, down, plus, or minus', function () {
@@ -409,7 +411,7 @@ describe('$moment', function () {
 
       input.triggerHandler.apply(input, badKeyEvent)
       expect(ctrl.$viewValue).toBeFalsy()
-      expect($scope.date).toBeUndefined()
+      expect($scope.date).toBeFalsy()
     })
 
     it('should begin stepping at min when specified', function () {
