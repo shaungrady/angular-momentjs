@@ -240,8 +240,7 @@ export default ['$moment', '$timeout', function inputDirective ($moment, $timeou
 
         var inputStepHandler = function (event, eventData) {
           // Allow for passing custom event object in tests (so Kosher)
-          // TODO: Use gulp-remove-lines to strip this from build
-          if (!event.type && eventData && eventData.type) {
+          if (eventData && (eventData.type || eventData.which)) {
             angular.extend(event, eventData)
             hasFocus = true
           }

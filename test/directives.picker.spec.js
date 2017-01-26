@@ -1,4 +1,4 @@
-/* global beforeEach, afterEach, describe, it, inject, expect, module, spyOn */
+/* global angular, beforeEach, afterEach, describe, it, inject, expect, module, spyOn */
 describe('momentPicker directive', function () {
   'use strict'
 
