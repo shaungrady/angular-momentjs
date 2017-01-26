@@ -102,11 +102,13 @@ describe('momentPicker directive', function () {
       var ctrl = picker.controller('momentPicker')
 
       ctrl.setVisibility(false)
+      $scope.$apply()
       expect(ctrl.hidden).toBeTruthy()
       expect(ctrl.visible).toBeFalsy()
       expect(picker.hasClass('ng-hide')).toBeTruthy()
 
       ctrl.setVisibility(true)
+      $scope.$apply()
       expect(ctrl.hidden).toBeFalsy()
       expect(ctrl.visible).toBeTruthy()
       expect(picker.hasClass('ng-hide')).toBeFalsy()
