@@ -1,5 +1,4 @@
 import angular from 'angular'
-import indexOf from 'indexof'
 
 export default ['$moment', '$log', function inputDirective ($moment, $log) {
   var weekStartDay = $moment().startOf('week').format('d')

@@ -15,7 +15,7 @@ describe('$moment', function () {
   var momentInputStep = '<input type="moment" ng-model="date" step="dateStep">'
 
   var dateFormat1 = 'MM-DD-YYYY'
-  var dateFormat2 = 'YYYY-MM-DD'
+  // var dateFormat2 = 'YYYY-MM-DD'
   // var dateFormat3 = 'MM-YYYY-DD'
   // var monthFormat = 'MM-YYYY'
 
@@ -156,7 +156,6 @@ describe('$moment', function () {
       expect(ctrl.$error.min).toBe(true)
       expect(ctrl.$error.max).toBeFalsy()
       expect(input.val()).toBe('')
-
 
       $scope.$apply("date = '" + modelDateHighest + "'")
       expect(ctrl.$error.min).toBeFalsy()
