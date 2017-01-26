@@ -20,7 +20,7 @@ describe('$moment', function () {
   // var monthFormat = 'MM-YYYY'
 
   var viewDate = '01/31/1986'
-  var modelDate = '507542400'
+  var modelDate = moment(viewDate).format('X')
 
   var todayModel = moment().format('X')
   var tomorrowModel = moment().add(1, 'day').format('X')
